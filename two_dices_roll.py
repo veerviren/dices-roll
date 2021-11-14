@@ -39,7 +39,12 @@ def roll_dice():
 
     #update total label
     total = v1 + v2
-    total_label.config(text =f"You rolled : {total}")
+    if total%2==0:
+     total_label.config(text =f"You won!! ({total})")
+    else:
+        total_label.config(text =f"Try again ({total})")
+
+
 #create a dice list
 dice_list = ['\u2680','\u2681','\u2682','\u2683','\u2684','\u2685']
 #create a frame
@@ -76,4 +81,7 @@ roll_button = Button(button_frame, text = "Roll dice", command=roll_dice, font=(
 roll_button.pack(side=LEFT, padx = 10)
 exit_button = Button(button_frame, text = "Exit", command=quit, font=("calibri",20), padx=20, pady=10,bg = "green",fg="white", activebackground="lightblue")
 exit_button.pack(side=RIGHT, padx = 10)
+
+# Initial state 
+total_label.config(text =f"Start")
 root.mainloop()
