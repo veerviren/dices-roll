@@ -1,10 +1,12 @@
 from tkinter import *
 from random import *
 root = Tk()
-root.geometry("550x600")
+root.geometry("550x650")
 root.title("Dice roll simulator")
 root.config(bg="black")
-intro_label = Label(root, text = "Welcome to the dice roll simulator", fg="lightblue", bg="black", font=("calibri",20)).pack(pady=20)
+intro_label = Label(root, text = "Welcome to the dice roll simulator", fg="purple", bg="black", font=("calibri",20)).pack(pady=20)
+rule_label= Label(root, text = " You win if you roll an even number ", fg = "cyan", bg = "black",font=("calibri",17) )
+rule_label.pack(pady= 10)
 # get the dice value
 def get_number(x):
     if x=='\u2680':
@@ -40,9 +42,13 @@ def roll_dice():
     #update total label
     total = v1 + v2
     if total%2==0:
-     total_label.config(text =f"You won!! ({total})")
+     total_label.config(text =f"You won!! ({total})", fg="blue")
+     dice_label1.config(fg = "blue")
+     dice_label2.config(fg="blue")
     else:
-        total_label.config(text =f"Try again ({total})")
+        total_label.config(text =f"Try again ({total})", fg = "red")
+        dice_label1.config(fg = "red")
+        dice_label2.config(fg="red")
 
 
 #create a dice list
@@ -79,9 +85,11 @@ roll_dice()
 #create a button
 roll_button = Button(button_frame, text = "Roll dice", command=roll_dice, font=("calibri",20), padx=10, pady=10,bg = "green",fg="white", activebackground="lightblue")
 roll_button.pack(side=LEFT, padx = 10)
-exit_button = Button(button_frame, text = "Exit", command=quit, font=("calibri",20), padx=20, pady=10,bg = "green",fg="white", activebackground="lightblue")
+exit_button = Button(button_frame, text = "Exit", command=quit, font=("calibri",20), padx=20, pady=10,bg = "red",fg="white", activebackground="lightblue")
 exit_button.pack(side=RIGHT, padx = 10)
 
 # Initial state 
-total_label.config(text =f"Start")
+total_label.config(text =f"Start", fg = "lightblue")
+dice_label1.config(fg="yellow")
+dice_label2.config(fg="yellow")
 root.mainloop()
